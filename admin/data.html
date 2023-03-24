@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../slide2.jpg);"></a>
+	        <ul class="list-unstyled components mb-5">
+	         
+	          <li>
+	              <a href="data.html">data</a>
+	          </li>
+	         
+	          <li>
+              <a href="../login.html">logout</a>
+	          </li>
+	        </ul>
+
+	       
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">logout</a>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <form method="post" enctype="" id="form">
+                <div class="user-details">
+                  <div class="input-box">
+                    <span class="details">nama</span>
+                    <input type="text" id="nama" placeholder="masukan namamu">
+                  </div>
+                  
+                  <div class="input-box">
+                    <span class="details">email</span>
+                    <input type="email" id="email" placeholder="masukan email">
+                  </div>
+                  
+                    <div class="input-box">
+                      <span class="details">jenis anjing</span>
+                      
+                    <select class="kombo" id="status">
+                  
+                      
+                      <option>buldog</option>
+                      <option>oyen</option>
+                      <option>hamster</option>
+                  </select>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">no telpon</span>
+                    <input type="text" id="telp" placeholder="masukan no telpon mu">
+                  </div>
+                  <div class="input-box">
+                      <span class="details">alamat</span>
+                      <textarea class="teks" id="alamat"></textarea>
+                    </div>
+                  
+                </div>
+                <div class="gender-details">
+                  <input type="radio" name="gender" id="dot-1" value="betina">
+                  <input type="radio" name="gender" id="dot-2" value="jantan">
+              
+                  <span class="gender-title">jenis kelamin</span>
+                  <div class="category">
+                    <label for="dot-1">
+                    <span class="dot one"></span>
+                    <span class="gender">betina</span>
+                  </label>
+                  <label for="dot-2">
+                    <span class="dot two"></span>
+                    <span class="gender">jantan</span>
+                  </label>
+                  
+                  </div>
+                </div>
+                <br>
+                <span class="hobi">umur</span>
+                
+                <br>
+                <input type="checkbox" id="hll" name="divisi" value="1-4">
+                <label for="1-4"> 1-4</label><br>
+                <input type="checkbox" id="sosmas" name="divisi" value="4-5">
+                <label for="4-5"> 4-5</label><br>
+              
+              
+                <div class="button">
+                  <input type="submit">
+                </div>
+              </form>
+
+
+      </div>
+		</div>
+      </div>
+		</div>
+        <script>
+            const form = document.getElementById('form')
+            const nama = document.getElementById('nama')
+            const email = document.getElementById('email')
+            const st = document.getElementById('status')
+            const telp = document.getElementById('telp')
+            const alamat = document.getElementById('alamat')
+            const wanita = document.getElementById('dot-1')
+            const pria = document.getElementById('dot-2')
+            
+            const hobi1 = document.getElementById('hll')
+            const hobi2 = document.getElementById('sosmas')
+            const dataForm = []
+          
+            form.addEventListener('submit', function(event){
+              event.preventDefault()
+          
+              let hobi1Value = '';
+              let hobi2Value = '';
+          
+              if(hobi1.checked) {
+                hobi1Value = hobi1.value;
+              }
+              if(hobi2.checked) {
+                hobi2Value = hobi2.value;
+              }
+          
+              dataForm.push({
+                "Nama": nama.value,
+                "email": email.value,
+                "status": st.value,
+                "telp": telp.value,
+                "alamat": alamat.value,
+                "dot-1": wanita.value,
+                "dot-2": pria.value,
+                "hll": hobi1Value,
+                "sosmas": hobi2Value,
+              })
+          
+              let dataUserString = JSON.stringify(dataForm);
+              sessionStorage.setItem('dataUserKey', dataUserString);
+          
+              alert("pendaftaran berhasil")
+             
+              window.location.href = "hasil.html"
+            })
+          
+            var inputs = document.querySelectorAll('.button_img')
+            for (var i = 0, len = inputs.length; i < len; i++) {
+              customInput(inputs[i])
+            }
+          </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

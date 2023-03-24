@@ -474,8 +474,9 @@ a {
 }
 
 .email_box{
-	width: 100%;
-	float: left;
+	width: 50%;
+    
+    margin-left: 270px;
 	background-color: #ffffff;
 	border-radius: 20px;
 	height: auto;
